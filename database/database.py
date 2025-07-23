@@ -22,8 +22,7 @@ class Database:
         sql = """CREATE TABLE IF NOT EXISTS users (
                telegram_id INTEGER NOT NULL UNIQUE,
                full_name TEXT,
-               phone_number VARCHAR(15),
-               lang VARCHAR(3)
+               phone_number VARCHAR(15)
             )"""
         self.execute(sql, commit=True)
 
@@ -31,10 +30,7 @@ class Database:
         sql = """INSERT INTO users(telegram_id) VALUES (?)"""
         self.execute(sql, telegram_id, commit=True)
 
-    def update_lang(self, lang, telegram_id):
-        sql = """UPDATE users SET lang = ? WHERE telegram_id = ?"""
-        self.execute(sql, lang, telegram_id, commit=True)
 
     def get_user(self, telegram_id):
         sql = """SELECT * FROM users WHERE telegram_id = ?"""
-        return  self.execute(sql, telegram_id, commit=True)
+        return  self.execute(sql, telegram_id, fetchone=True)

@@ -1,6 +1,6 @@
 
 from data.loader import bot, db
-import handlers
+
 
 
 if __name__ == '__main__':
