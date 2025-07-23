@@ -1,5 +1,6 @@
 
 from data.loader import bot, db
+import handlers
 
 
 
